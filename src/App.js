@@ -47,6 +47,7 @@ export default function App() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
+  if (!weather) return <p>No data</p>;
 
   return (
     <div style={{ padding: 20 }}>
