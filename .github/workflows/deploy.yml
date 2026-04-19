@@ -25,6 +25,15 @@ jobs:
       - name: Install deps
         run: npm install
 
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Get Axios downloads
+        id: axios
+        run: |
+          DOWNLOADS=$(curl -s https://api.npmjs.org/downloads/point/last-week/axios | jq .downloads)
+          echo "AXIOS_DOWNLOADS=$DOWNLOADS" >> $GITHUB_ENV
+
       - name: Build app
         run: npm run build
 
